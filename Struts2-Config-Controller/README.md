@@ -1,0 +1,2 @@
+# Struts2-Config-Controller
+Struts2前端控制器使用属性驱动和模型驱动给对象赋值、使用OGNL遍历数据在页面中展示

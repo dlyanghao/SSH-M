@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.yanghao.bean.Category" table="category" >
+		<!-- 配置主键 -->
+		<!-- 主键生成策略 -->
+		<!-- 
+			increment:检索自增，会先查询表中的最大的下标，然后下标加一作为下一个新插入的数据的主键，在多线程和集群中有很大的问题，不推荐使用
+			assigned(指定的、赋值的):自定义主键
+			identity:自动增长，有索引的增长，Mysql的自动增长策略
+			sequence:自动增长，有索引的增长，Oracle的自动增长策略
+			native:本地策略，根据不同数据库能进行不同的自动增长策略的选择，如果是mysql，就用identity，如果是Oracle就用sequence
+		
+			uuid:随机的字符串策略，用于生成唯一的字符串主键的策略
+		 -->
+		<id name="cid" column="cid">
+			<generator class="native"></generator>
+		</id>
+		
+		<!-- 配置对应表中的属性 -->
+		<property name="cname" column="cname"/>
+		
+		<!-- key的column表示多的一方的外键名,inverse=true让一方级联保存多方时多方放弃外键维护，因为外键是属于多的一方的，两方都维护外键会产生重复的sql操作-->
+		<set name="products" cascade="delete" inverse="true">
+			<key column="cid"/>
+			<one-to-many class="com.yanghao.bean.Product"/>		
+		</set>
+	</class>
+</hibernate-mapping>
+    

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+
+
+        <!--实体Bean,由Spring（IOC容器）管理并自动注入（DI）相关属性和对象-->
+    <!--DI主要有三种：属性注入、构造方法注入、工厂的方式注入-->
+    <!--Dao层实体bean-->
+    <!--<bean id="uDao" class="com.yanghao.daoimpl.UserDaoImpl"></bean>-->
+
+    <!--开启Spring注解的扫描，扫描当前包及其子包下的所有IOC和DI注解类，由Spring维护和管理所有的实体Bean-->
+    <context:component-scan base-package="com.yanghao.anno"></context:component-scan>
+
+    <!--打开aop的注解扫描代理-->
+    <aop:aspectj-autoproxy/>
+    <!--Service层实体Bean-->
+    <!--<bean id="uService" class="com.yanghao.serviceimpl.UserServiceImpl">-->
+        <!--<property name="userDao" ref="uDao"></property>-->
+    <!--</bean>-->
+
+</beans>

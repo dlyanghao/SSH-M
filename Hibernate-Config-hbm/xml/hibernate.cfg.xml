@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	<!-- hibernate的必配选项 -->
+	
+	<!-- 配置数据库驱动 -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+	<!-- 配置数据库url -->
+		<property name="hibernate.connection.url">jdbc:mysql:///test</property>
+	<!-- 配置数据库用户名 -->
+		<property name="hibernate.connection.username">root</property>
+	<!-- 配置数据密码 -->
+		<property name="hibernate.connection.password">7773365</property>
+	<!-- 配置数据库方言 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	<!-- hibernate的必配选项结束 -->
+	
+	<!-- hibernate的可选配置项 -->
+	
+	<!-- 配置运行过程中的sql语句展示 -->
+		<property name="hibernate.show_sql">true</property>
+	<!-- 美化展示的sql语句 -->
+		<property name="hibernate.format_sql">true</property>
+	<!-- 使用第三方连接池 -->
+		<property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+	<!-- 设置第三方连接池的属性 -->
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.timeout">5000</property>
+	<!-- 配置DDL数据库规则 -->
+	<!-- 
+		none:不用Hibernate自动生成表(默认)
+		create-drop:每次都会创建一个新的表，执行程序结束后删除这个表.
+		create:每次都会创建一个新的表.
+		update:有(表, 列)就使用, 没有(表, 列)就创建
+		validate:只会使用原有的表.对映射关系进行校验.
+	 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+	<!-- 配置映射文件 -->
+		<mapping resource="com/yanghao/bean/actor.hbm.xml"/>
+
+	</session-factory>
+</hibernate-configuration>

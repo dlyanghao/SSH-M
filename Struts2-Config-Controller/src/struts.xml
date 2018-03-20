@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="user" namespace="/" extends="struts-default">
+        <action name="login" class="com.yanghao.web.action.UserAction" method="login">
+            <result name="loginSuccess">
+                /index.jsp
+            </result>
+            <result name="loginFail">
+                /error.jsp
+            </result>
+        </action>
+
+        <action name="login2" class="com.yanghao.web.action.UserAction2" method="login">
+            <result name="loginSuccess">
+                /index.jsp
+            </result>
+            <result name="loginFail">
+                /error.jsp
+            </result>
+        </action>
+    </package>
+
+    <package name="product" namespace="/" extends="struts-default">
+        <!--定义拦截器（只会拦截配置好的Action路径请求），请求到达Action前经过一系列拦截器-->
+        <interceptors>
+            <interceptor name="isLogin" class="com.yanghao.web.intercepter.LoginInter"></interceptor>
+        </interceptors>
+
+        <action name="products" class="com.yanghao.web.action.ProductAction" method="products">
+            <interceptor-ref name="isLogin"></interceptor-ref>
+            <result name="noLogin">
+                /login.jsp
+            </result>
+
+            <result name="OK">
+                /show.jsp
+            </result>
+            <result name="NO">
+                /error.jsp
+            </result>
+        </action>
+    </package>
+
+</struts>
