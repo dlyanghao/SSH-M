@@ -1,2 +1,2 @@
 # MybatisCombineSpring
-Mybatis整合Spring
+Mybatis整合Spring ，Mapper使用逆向工程生成
